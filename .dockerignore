@@ -1,0 +1,6 @@
+dist/*
+*.egg-info/*
+.env
+Dockerfile
+yolov5s.pt
+yolov5n.pt
