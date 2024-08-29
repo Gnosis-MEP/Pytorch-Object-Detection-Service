@@ -1,8 +1,7 @@
 FROM python:3.8
 
 WORKDIR /service
-# RUN wget -O yolov5n.pt https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5n.pt
-RUN wget -O yolov5s.pt https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5s.pt
+RUN wget -O yolov5n.pt https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5n.pt
 
 RUN apt-get update \
     && apt-get install -y \

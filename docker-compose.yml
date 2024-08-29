@@ -6,7 +6,7 @@ services:
       - "6379:6379"
 
   service:
-    image: registry.insight-centre.org/sit/mps/pytorch-object-detection-service:dev
+    image: arruda/pytorch-object-detection-service:master
     command: echo "ok"
     build:
       context: '.'
