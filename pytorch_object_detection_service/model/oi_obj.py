@@ -46,7 +46,7 @@ class OIObjModel():
 
         with torch.no_grad():
             output = self.model([preprocess_img])
-            output_predictions = output.xyxyn[0]
+            output_predictions = output.xyxy[0]
 
         np_predicts = output_predictions.cpu().numpy().astype("float32")
 
@@ -61,7 +61,7 @@ class OIObjModel():
                 obj = {
                     'class_id': int(class_idx),
                     'label': label,
-                    'bounding_box': [float(i) for i in [xmin, ymin, xmax, ymax]],
+                    'bounding_box': [int(i) for i in [xmin, ymin, xmax, ymax]],
                     'confidence': float(conf)
                 }
                 predicted_object_list.append(obj)
