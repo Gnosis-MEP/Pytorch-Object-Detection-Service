@@ -1,12 +1,18 @@
 FROM python:3.8
 
-WORKDIR /service
-RUN wget -O yolov5n.pt https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5n.pt
-
 RUN apt-get update \
     && apt-get install -y \
         libgl1-mesa-glx \
     && rm -rf /var/lib/apt/lists/*
+
+
+WORKDIR /service
+RUN wget -O yolov5n.pt https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5n.pt
+
+RUN mkdir -p /torchhome/hub
+env TORCH_HOME=/torchhome
+RUN git clone --depth 1 https://github.com/ultralytics/yolov5.git /torchhome/hub/ultralytics_yolov5_master && \
+    rm -r /torchhome/hub/ultralytics_yolov5_master/.git
 
 ## install only the service requirements
 ADD ./requirements.txt /service/requirements.txt
